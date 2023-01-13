@@ -6,6 +6,11 @@ TOPDIR=$(PWD)
 build:
 	docker build --tag $(IMAGE_NAME):$(VERSION) .
 
+upgrade:
+	sed -i 's/==/>=/' requirements.txt
+	docker build --tag $(IMAGE_NAME):$(VERSION) -f Dockerfile.upgrade .
+	docker image rm $(IMAGE_NAME):$(VERSION)
+
 inspect:
 	docker run \
 	--privileged \
@@ -31,9 +36,9 @@ spin:
 
 test:
 	docker run --rm -it --name $(CONTAINER_NAME) $(IMAGE_NAME):$(VERSION) cat /etc/os-release | grep "Alpine Linux"
-	docker run --rm -it --name $(CONTAINER_NAME) $(IMAGE_NAME):$(VERSION) cat /etc/os-release | grep "3.15"
-	docker run --rm -it --name $(CONTAINER_NAME) $(IMAGE_NAME):$(VERSION) python --version | grep "Python 3.10.4"
-	docker run --rm -it --name $(CONTAINER_NAME) $(IMAGE_NAME):$(VERSION) pip3 --version | grep "pip 22.0.4"
+	docker run --rm -it --name $(CONTAINER_NAME) $(IMAGE_NAME):$(VERSION) cat /etc/os-release | grep "3.17"
+	docker run --rm -it --name $(CONTAINER_NAME) $(IMAGE_NAME):$(VERSION) python --version | grep "Python 3.11.1"
+	docker run --rm -it --name $(CONTAINER_NAME) $(IMAGE_NAME):$(VERSION) pip3 --version | grep "pip 22.3.1"
 	docker run --rm -it --name $(CONTAINER_NAME) $(IMAGE_NAME):$(VERSION) python ./cc2538-bsl.py --version | grep "2.1"
 	
 destroy:
