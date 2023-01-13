@@ -31,7 +31,6 @@ blocks:
           commands:
             - checkout
             - docker build --tag $DOCKER_USERNAME/$DOCKER_IMAGE .
-            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep "Alpine Linux"
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep "3.17"
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE python --version | grep "Python 3.11.1"
