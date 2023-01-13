@@ -32,9 +32,9 @@ blocks:
             - checkout
             - docker build --tag $DOCKER_USERNAME/$DOCKER_IMAGE .
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep "Alpine Linux"
-            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep "3.15.0"
-            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE python --version | grep "Python 3.10.4"
-            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE pip3 --version | grep "pip 22.0.4"
+            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep "3.17"
+            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE python --version | grep "Python 3.11.1"
+            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE pip3 --version | grep "pip 22.3.1"
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE python ./cc2538-bsl.py --version | grep "2.1"
 
 promotions:
