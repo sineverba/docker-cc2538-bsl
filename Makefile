@@ -1,6 +1,6 @@
 IMAGE_NAME=sineverba/cc2538-bsl
 CONTAINER_NAME=cc2538-bsl
-VERSION=1.1.0-dev
+VERSION=1.1.1-dev
 TOPDIR=$(PWD)
 
 build:
