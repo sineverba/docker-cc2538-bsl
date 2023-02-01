@@ -1,5 +1,5 @@
-Docker CC2538 BSL Docker flash
-==============================
+Docker CC2538 / CC2652 BSL Docker flash
+=======================================
 
 > Docker image to flash firmware on CC2538 - CC2652 Zigbee keys with the help of 2538bsl py.
 
@@ -14,7 +14,7 @@ Credits: https://github.com/JelmerT/cc2538-bsl.git
 
 | CI / CD | Status |
 | ------- | ------ |
-| Semaphore | [![Build Status](https://sineverba.semaphoreci.com/badges/docker-cc2538-bsl/branches/master.svg)](https://sineverba.semaphoreci.com/projects/docker-cc2538-bsl) |
+| Semaphore | [![Build Status](https://sineverba.semaphoreci.com/badges/docker-cc2538-bsl/branches/master.svg?style=shields&key=177dc3d1-ccb5-43c5-95ad-06fb51346f81)](https://sineverba.semaphoreci.com/projects/docker-cc2538-bsl) |
 
 
 ## How to use
