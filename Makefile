@@ -1,6 +1,6 @@
 IMAGE_NAME=sineverba/cc2538-bsl
 CONTAINER_NAME=cc2538-bsl
-VERSION=1.1.1-dev
+VERSION=1.2.0-dev
 PYTHON_IMAGE=python:3.11.4-alpine3.18
 TOPDIR=$(PWD)
 
