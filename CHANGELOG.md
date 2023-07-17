@@ -1,4 +1,7 @@
-# 1.1.1
+# Next version
++ Upgrade dependencies
+
+## 1.1.1
 + Fix documentation
 
 ## 1.1.0
