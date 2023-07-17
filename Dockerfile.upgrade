@@ -1,8 +1,0 @@
-FROM python:3.11.1-alpine3.17
-# Setup PIP
-RUN pip install pip --upgrade
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-RUN pip freeze > requirements.txt
-# Print new requirements
-RUN cat requirements.txt
