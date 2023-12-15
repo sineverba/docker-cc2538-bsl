@@ -1,6 +1,11 @@
-FROM python:3.11.4-alpine3.18
+ARG PYTHON_VERSION=3.12.1
+FROM python:${PYTHON_VERSION}-alpine3.19
 # Update and upgrade
-RUN apk update && apk upgrade --available
+# Update and upgrade
+RUN apk update && \
+    apk add --upgrade apk-tools && \
+    apk upgrade --available && \
+    rm -rf /var/cache/apk/*
 # Set env variable
 ENV FILENAME firmware.hex
 # Install requirements
