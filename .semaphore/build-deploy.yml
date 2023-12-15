@@ -23,9 +23,11 @@ global_job_config:
     - name: DOCKER_IMAGE
       value: cc2538-bsl
     - name: BUILDX_VERSION
-      value: 0.11.1
+      value: 0.12.0
     - name: BINFMT_VERSION
       value: qemu-v7.0.0-28
+    - name: PYTHON_VERSION
+      value: 3.12.1
 
 blocks:
   - name: 'Build and deploy'
@@ -50,6 +52,7 @@ blocks:
             - docker buildx inspect --bootstrap --builder multiarch
             - >-
               docker buildx build 
+              --build-arg PYTHON_VERSION=$PYTHON_VERSION 
               --platform linux/arm64/v8,linux/amd64,linux/arm/v6,linux/arm/v7 
               --tag $DOCKER_USERNAME/$DOCKER_IMAGE:$SEMAPHORE_GIT_TAG_NAME 
               --tag $DOCKER_USERNAME/$DOCKER_IMAGE:latest 
