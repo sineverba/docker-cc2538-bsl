@@ -1,2 +1,4 @@
 intelhex==2.3.0
 pyserial==3.5
+setuptools==69.0.2
+wheel==0.42.0

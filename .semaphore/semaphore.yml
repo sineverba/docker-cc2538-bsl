@@ -20,6 +20,10 @@ global_job_config:
       value: sineverba
     - name: DOCKER_IMAGE
       value: cc2538-bsl
+    - name: PYTHON_VERSION
+      value: 3.12.1
+    - name: ALPINE_VERSION
+      value: 3.19.0
 
 blocks:
   - name: 'Build and test'
@@ -30,11 +34,10 @@ blocks:
         - name: 'Build and test'
           commands:
             - checkout
-            - docker build --tag $DOCKER_USERNAME/$DOCKER_IMAGE .
-            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep "Alpine Linux"
-            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep "3.18.2"
-            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE python --version | grep "Python 3.11.4"
-            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE pip3 --version | grep "pip 23.1.2"
+            - docker build --build-arg ALPINE_VERSION=$ALPINE_VERSION --tag $DOCKER_USERNAME/$DOCKER_IMAGE "."
+            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep $ALPINE_VERSION
+            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE python --version | grep $PYTHON_VERSION
+            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE pip3 --version | grep "pip 23.2.1"
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE python ./cc2538-bsl.py --version | grep "2.1"
 
 promotions:
