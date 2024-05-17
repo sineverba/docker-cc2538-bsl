@@ -8,6 +8,7 @@ Credits: https://github.com/JelmerT/cc2538-bsl.git
 | CI / CD | Status |
 | ------- | ------ |
 | Semaphore | [![Build Status](https://sineverba.semaphoreci.com/badges/docker-cc2538-bsl/branches/master.svg?style=shields&key=177dc3d1-ccb5-43c5-95ad-06fb51346f81)](https://sineverba.semaphoreci.com/projects/docker-cc2538-bsl) |
+| CircleCI | [![CircleCI](https://dl.circleci.com/status-badge/img/gh/sineverba/docker-cc2538-bsl/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/sineverba/docker-cc2538-bsl/tree/master) |
 
 
 ## Available architectures

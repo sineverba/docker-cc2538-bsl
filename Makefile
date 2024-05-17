@@ -22,7 +22,9 @@ devspin:
 build:
 	docker build \
 		--build-arg PYTHON_VERSION=$(PYTHON_VERSION) \
-		--tag $(IMAGE_NAME):$(VERSION) .
+		--tag $(IMAGE_NAME):$(VERSION) \
+		--file dockerfiles/production/Dockerfile \
+		"."
 
 upgrade:
 	mkdir req

@@ -27,7 +27,12 @@ blocks:
         - name: 'Build and test'
           commands:
             - checkout
-            - docker build --build-arg ALPINE_VERSION=$ALPINE_VERSION --tag $DOCKER_USERNAME/$DOCKER_IMAGE "."
+            - >-
+              docker build 
+              --build-arg PYTHON_VERSION=$PYTHON_VERSION 
+              --tag $DOCKER_USERNAME/$DOCKER_IMAGE 
+              --file dockerfiles/production/Dockerfile
+              "."
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep $ALPINE_VERSION
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE python --version | grep $PYTHON_VERSION
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE pip3 --version | grep "pip 23.2.1"
