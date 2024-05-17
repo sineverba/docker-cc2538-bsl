@@ -1,5 +1,6 @@
 # Next version
 + Move to Dev Container
++ Move Dockerfile build
 
 ## 1.3.0
 + Upgrade dependencies

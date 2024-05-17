@@ -46,6 +46,7 @@ jobs:
               --platform linux/arm64,linux/arm/v6,linux/arm/v7 \
               --build-arg PYTHON_VERSION=$PYTHON_VERSION \
               --tag $DOCKER_LOGIN/$DOCKER_IMAGE:cache-arm \
+              --file dockerfiles/production/Dockerfile \
               --push \
               '.'
   build_amd64:
@@ -77,6 +78,7 @@ jobs:
             --build-arg PYTHON_VERSION=$PYTHON_VERSION \
             --tag $DOCKER_LOGIN/$DOCKER_IMAGE:$CIRCLE_TAG \
             --tag $DOCKER_LOGIN/$DOCKER_IMAGE:latest \
+            --file dockerfiles/production/Dockerfile \
             --push \
             "."
   delete_cache_arm:
