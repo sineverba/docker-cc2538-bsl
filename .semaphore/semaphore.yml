@@ -16,7 +16,7 @@ global_job_config:
     - name: PYTHON_VERSION
       value: 3.12.1
     - name: ALPINE_VERSION
-      value: 3.19.0
+      value: 3.19.1
 
 blocks:
   - name: 'Build and test'
