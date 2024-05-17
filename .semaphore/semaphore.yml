@@ -8,13 +8,6 @@ agent:
 
 global_job_config:
 
-  secrets:
-    - name: ACCESS_TOKENS
-
-  prologue:
-    commands:
-      - echo $DOCKER_TOKEN | docker login --username "$DOCKER_USERNAME" --password-stdin
-
   env_vars:
     - name: DOCKER_USERNAME
       value: sineverba
@@ -39,9 +32,3 @@ blocks:
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE python --version | grep $PYTHON_VERSION
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE pip3 --version | grep "pip 23.2.1"
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE python ./cc2538-bsl.py --version | grep "2.1"
-
-promotions:
-  - name: Deploy
-    pipeline_file: build-deploy.yml
-    auto_promote:
-      when: "result = 'passed' and tag =~ '.*'"
