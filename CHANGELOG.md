@@ -1,4 +1,4 @@
-# Next version
+# 1.4.0
 + Move to Dev Container
 + Move Dockerfile build
 + Upgrade dependencies
