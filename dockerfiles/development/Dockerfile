@@ -1,7 +1,7 @@
-FROM python:3.12.1-alpine3.19
+FROM python:3.12.3-alpine3.19
 # Update and upgrade
 RUN apk update && \
-    apk add --upgrade apk-tools git openssh-client && \
+    apk add --upgrade apk-tools git make openssh-client && \
     apk upgrade --available && \
     rm -rf /var/cache/apk/*
 # Create a group and user

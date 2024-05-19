@@ -6,7 +6,7 @@ executors:
     resource_class: arm.medium
     environment:
       DOCKER_IMAGE: cc2538-bsl
-      PYTHON_VERSION: 3.12.1
+      PYTHON_VERSION: 3.12.3
       BINFMT_VERSION: qemu-v8.1.5-43
   amd64_executor:
     machine:
@@ -14,7 +14,7 @@ executors:
     resource_class: medium
     environment:
       DOCKER_IMAGE: cc2538-bsl
-      PYTHON_VERSION: 3.12.1
+      PYTHON_VERSION: 3.12.3
       BINFMT_VERSION: qemu-v8.1.5-43
       DELETE_TAG_TAG: 1.0.2
 jobs:
