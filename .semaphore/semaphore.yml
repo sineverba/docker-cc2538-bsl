@@ -8,22 +8,15 @@ agent:
 
 global_job_config:
 
-  secrets:
-    - name: ACCESS_TOKENS
-
-  prologue:
-    commands:
-      - echo $DOCKER_TOKEN | docker login --username "$DOCKER_USERNAME" --password-stdin
-
   env_vars:
     - name: DOCKER_USERNAME
       value: sineverba
     - name: DOCKER_IMAGE
       value: cc2538-bsl
     - name: PYTHON_VERSION
-      value: 3.12.1
+      value: 3.12.3
     - name: ALPINE_VERSION
-      value: 3.19.0
+      value: 3.19.1
 
 blocks:
   - name: 'Build and test'
@@ -34,14 +27,13 @@ blocks:
         - name: 'Build and test'
           commands:
             - checkout
-            - docker build --build-arg ALPINE_VERSION=$ALPINE_VERSION --tag $DOCKER_USERNAME/$DOCKER_IMAGE "."
+            - >-
+              docker build 
+              --build-arg PYTHON_VERSION=$PYTHON_VERSION 
+              --tag $DOCKER_USERNAME/$DOCKER_IMAGE 
+              --file dockerfiles/production/Dockerfile
+              "."
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep $ALPINE_VERSION
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE python --version | grep $PYTHON_VERSION
-            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE pip3 --version | grep "pip 23.2.1"
+            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE pip3 --version | grep "pip 24.0"
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE python ./cc2538-bsl.py --version | grep "2.1"
-
-promotions:
-  - name: Deploy
-    pipeline_file: build-deploy.yml
-    auto_promote:
-      when: "result = 'passed' and tag =~ '.*'"

@@ -5,16 +5,33 @@ Docker CC2538 / CC2652 BSL Docker flash
 
 Credits: https://github.com/JelmerT/cc2538-bsl.git
 
-## Available architectures
-
-+ linux/arm64/v8
-+ linux/amd64
-+ linux/arm/v6
-+ linux/arm/v7
-
 | CI / CD | Status |
 | ------- | ------ |
 | Semaphore | [![Build Status](https://sineverba.semaphoreci.com/badges/docker-cc2538-bsl/branches/master.svg?style=shields&key=177dc3d1-ccb5-43c5-95ad-06fb51346f81)](https://sineverba.semaphoreci.com/projects/docker-cc2538-bsl) |
+| CircleCI | [![CircleCI](https://dl.circleci.com/status-badge/img/gh/sineverba/docker-cc2538-bsl/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/sineverba/docker-cc2538-bsl/tree/master) |
+
+
+## Available architectures
+
++ linux/arm64
++ linux/arm/v6
++ linux/arm/v7
+
+## Setup for development
+
+[![Open in Dev Containers](https://img.shields.io/static/v1?label=Dev%20Containers&message=Open&color=blue&logo=visualstudiocode)](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/sineverba/docker-cc2538-bsl)
+
+Or
+
+1. Install VSCode extension "Dev Containers"
+
+2. Clone and open up the repository in VSCode, then, you should see the following notification:
+
+![VSCode popup](./.devcontainer/folder.webp)
+
+3. Click on "Reopen in Container"
+
+4. Enjoy!
 
 
 ## How to use
@@ -32,5 +49,5 @@ docker run \
 	-v /run/udev:/run/udev:ro \
 	--rm -it \
 	--name cc25838bsl \
-	sineverba/cc2538-bsl:latest
+	sineverba/cc2538-bsl:1.4.0
 ```
