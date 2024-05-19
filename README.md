@@ -49,5 +49,5 @@ docker run \
 	-v /run/udev:/run/udev:ro \
 	--rm -it \
 	--name cc25838bsl \
-	sineverba/cc2538-bsl:latest
+	sineverba/cc2538-bsl:1.4.0
 ```
