@@ -14,7 +14,7 @@ global_job_config:
     - name: DOCKER_IMAGE
       value: cc2538-bsl
     - name: PYTHON_VERSION
-      value: 3.12.1
+      value: 3.12.3
     - name: ALPINE_VERSION
       value: 3.19.1
 
@@ -35,5 +35,5 @@ blocks:
               "."
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep $ALPINE_VERSION
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE python --version | grep $PYTHON_VERSION
-            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE pip3 --version | grep "pip 23.2.1"
+            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE pip3 --version | grep "pip 24.0"
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE python ./cc2538-bsl.py --version | grep "2.1"
