@@ -5,25 +5,11 @@ PYTHON_VERSION=3.12.3
 ALPINE_VERSION=3.19.1
 TOPDIR=$(PWD)
 
-
-devbuild:
-	docker build \
-		--tag $(IMAGE_NAME):$(VERSION) \
-		--file dockerfiles/development/Dockerfile \
-		"."
-
-devspin:
-	docker run \
-		--rm -it \
-		--name $(CONTAINER_NAME) \
-		--entrypoint /bin/sh \
-		$(IMAGE_NAME):$(VERSION)
-
 build:
 	docker build \
 		--build-arg PYTHON_VERSION=$(PYTHON_VERSION) \
 		--tag $(IMAGE_NAME):$(VERSION) \
-		--file dockerfiles/production/Dockerfile \
+		--file Dockerfile \
 		"."
 
 upgrade:

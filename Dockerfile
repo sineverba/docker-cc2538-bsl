@@ -8,10 +8,10 @@ RUN apk update && \
 # Set env variable
 ENV FILENAME firmware.hex
 # Install requirements
-COPY ../../requirements.txt .
+COPY requirements.txt .
 RUN pip3 install -r requirements.txt
 # Copy cc2538-bsl.py
-COPY ../../cc2538-bsl.py .
-COPY dockerfiles/production/entrypoint.sh /entrypoint.sh
+COPY cc2538-bsl.py .
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
 CMD [ "/entrypoint.sh" ]
