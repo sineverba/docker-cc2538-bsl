@@ -1,8 +1,8 @@
 IMAGE_NAME=sineverba/cc2538-bsl
 CONTAINER_NAME=cc2538-bsl
 VERSION=1.4.0-dev
-PYTHON_VERSION=3.12.3
-ALPINE_VERSION=3.19.1
+PYTHON_VERSION=3.13.6
+ALPINE_VERSION=3.22
 TOPDIR=$(PWD)
 
 build:
@@ -13,11 +13,18 @@ build:
 		"."
 
 upgrade:
-	pip install --upgrade pip
-	sed -i 's/==/>=/' requirements.txt
-	pip install -r requirements.txt
-	pip freeze > requirements.txt
-	sed -i 's/>=/==/' requirements.txt
+	docker run --rm -it \
+		--name $(CONTAINER_NAME) \
+		-v $(PWD)/requirements.txt:/app/requirements.txt \
+		$(IMAGE_NAME):$(VERSION) \
+		sh -c "pip install --upgrade pip --root-user-action=ignore \
+		&& pip list --outdated \
+		&& sed 's/==/>=/' /app/requirements.txt > /tmp/requirements_temp.txt \
+		&& cat /tmp/requirements_temp.txt > /app/requirements.txt \
+		&& pip install -r /app/requirements.txt --upgrade --root-user-action=ignore \
+		&& pip freeze > /tmp/requirements_new.txt \
+		&& sed 's/>=/==/' /tmp/requirements_new.txt > /app/requirements.txt"
+
 
 inspect:
 	docker run \
@@ -46,7 +53,7 @@ test:
 	docker run --rm -it --name $(CONTAINER_NAME) $(IMAGE_NAME):$(VERSION) cat /etc/os-release | grep "Alpine Linux"
 	docker run --rm -it --name $(CONTAINER_NAME) $(IMAGE_NAME):$(VERSION) cat /etc/os-release | grep $(ALPINE_VERSION)
 	docker run --rm -it --name $(CONTAINER_NAME) $(IMAGE_NAME):$(VERSION) python --version | grep $(PYTHON_VERSION)
-	docker run --rm -it --name $(CONTAINER_NAME) $(IMAGE_NAME):$(VERSION) pip3 --version | grep "pip 24.0"
+	docker run --rm -it --name $(CONTAINER_NAME) $(IMAGE_NAME):$(VERSION) pip3 --version | grep "pip 25.2"
 	docker run --rm -it --name $(CONTAINER_NAME) $(IMAGE_NAME):$(VERSION) python ./cc2538-bsl.py --version | grep "2.1"
 	
 destroy:
