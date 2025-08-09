@@ -6,16 +6,16 @@ executors:
     resource_class: arm.medium
     environment:
       DOCKER_IMAGE: cc2538-bsl
-      PYTHON_VERSION: 3.12.3
-      BINFMT_VERSION: qemu-v8.1.5-43
+      PYTHON_VERSION: 3.13.6
+      BINFMT_VERSION: qemu-v9.2.2-53
   amd64_executor:
     machine:
       image: ubuntu-2204:current
     resource_class: medium
     environment:
       DOCKER_IMAGE: cc2538-bsl
-      PYTHON_VERSION: 3.12.3
-      BINFMT_VERSION: qemu-v8.1.5-43
+      PYTHON_VERSION: 3.13.6
+      BINFMT_VERSION: qemu-v9.2.2-53
       DELETE_TAG_TAG: 1.0.2
 jobs:
   build_arm64:

@@ -1,5 +1,6 @@
 # Next version
 + Refactor code and Docker (remove dev container)
++ Upgrade dependencies
 
 ## 1.4.0
 + Move to Dev Container
