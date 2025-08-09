@@ -35,5 +35,5 @@ blocks:
               "."
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE cat /etc/os-release | grep $ALPINE_VERSION
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE python --version | grep $PYTHON_VERSION
-            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE pip3 --version | grep "pip 25-2"
+            - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE pip3 --version | grep "pip 25.2"
             - docker run --rm -it $DOCKER_USERNAME/$DOCKER_IMAGE python ./cc2538-bsl.py --version | grep "2.1"
