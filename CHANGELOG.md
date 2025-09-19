@@ -1,6 +1,7 @@
 # Next version
 + Refactor code and Docker (remove dev container)
 + Upgrade dependencies
++ Pass PIP value as ARG
 
 ## 1.4.0
 + Move to Dev Container
