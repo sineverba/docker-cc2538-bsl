@@ -1,10 +1,14 @@
 ARG PYTHON_VERSION
 FROM python:${PYTHON_VERSION}-alpine3.22
-# Update and upgrade
+
+# Update and upgrade system packages
 RUN apk update && \
     apk add --upgrade apk-tools && \
     apk upgrade --available && \
     rm -rf /var/cache/apk/*
+
+# Set working directory
+WORKDIR /app
 # Set env variable
 ENV FILENAME firmware.hex
 # Install requirements
