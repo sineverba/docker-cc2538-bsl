@@ -3,6 +3,7 @@
 + Upgrade dependencies
 + Pass PIP value as ARG
 + Refactor get latest pip
++ Refactor update PIP version in Makefile
 
 ## 1.4.0
 + Move to Dev Container
