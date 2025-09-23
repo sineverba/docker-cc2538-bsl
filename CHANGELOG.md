@@ -2,6 +2,7 @@
 + Refactor code and Docker (remove dev container)
 + Upgrade dependencies
 + Pass PIP value as ARG
++ Refactor get latest pip
 
 ## 1.4.0
 + Move to Dev Container
